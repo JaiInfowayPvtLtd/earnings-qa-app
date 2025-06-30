@@ -1,0 +1,110 @@
+[
+  {
+    "company": "Allstate Corporation",
+    "ticker": "ALL",
+    "earnings_date": "2025-05-08",
+    "questions_answers": [
+      {
+        "question": "Can you explain the drivers behind the increase in combined ratio this quarter?",
+        "answer": "The increase was driven by elevated catastrophe losses and higher claim severity, particularly in auto insurance."
+      },
+      {
+        "question": "What are your expectations for rate increases going forward?",
+        "answer": "We anticipate further rate increases in key markets, guided by our actuarial analysis and regulatory approvals."
+      },
+      {
+        "question": "How are you managing auto loss inflation?",
+        "answer": "We are leveraging telematics data to optimize underwriting and have launched cost containment programs."
+      },
+      {
+        "question": "Are you seeing any improvements in customer retention?",
+        "answer": "Yes, with improved digital servicing and more personalized offerings, we've seen a modest uptick in retention metrics."
+      },
+      {
+        "question": "What's your outlook on catastrophe exposure management?",
+        "answer": "We're actively adjusting our geographic footprint and reinsurance structure to reduce net exposure to severe weather events."
+      }
+    ]
+  },
+  {
+    "company": "Progressive Corporation",
+    "ticker": "PGR",
+    "earnings_date": "2025-05-10",
+    "questions_answers": [
+      {
+        "question": "What drove strong growth in written premiums this quarter?",
+        "answer": "Premium growth was fueled by increased policy count in personal lines and favorable pricing momentum."
+      },
+      {
+        "question": "How is Snapshot telematics influencing pricing and loss ratios?",
+        "answer": "Snapshot is allowing more accurate pricing and behavioral segmentation, contributing to better loss performance."
+      },
+      {
+        "question": "What are your strategic priorities in commercial lines?",
+        "answer": "We're expanding distribution and investing in technology to improve quote turnaround and agent enablement."
+      },
+      {
+        "question": "How are you navigating the current reinsurance market?",
+        "answer": "While rates remain elevated, our risk appetite and retention levels remain stable, thanks to disciplined underwriting."
+      },
+      {
+        "question": "Are you facing any operational headwinds post-COVID?",
+        "answer": "Operationally, we’re focused on hybrid work strategies, maintaining service levels, and automation for FNOL processes."
+      }
+    ]
+  },
+  {
+    "company": "MetLife, Inc.",
+    "ticker": "MET",
+    "earnings_date": "2025-04-30",
+    "questions_answers": [
+      {
+        "question": "What are the main growth drivers in your international business?",
+        "answer": "Emerging markets, especially in Asia, are driving growth through digital channels and expanding middle-class demand."
+      },
+      {
+        "question": "How do you plan to enhance margins in the U.S. Group Benefits segment?",
+        "answer": "Margin improvement will come from pricing discipline, cost initiatives, and tech-driven claims processing."
+      },
+      {
+        "question": "Can you elaborate on your capital deployment strategy?",
+        "answer": "We're maintaining a balanced approach: reinvestment in the business, strategic M&A, and shareholder return."
+      },
+      {
+        "question": "How do interest rate changes affect your business?",
+        "answer": "Higher rates benefit our spread-based businesses, but we remain cautious on reinvestment yields and duration risk."
+      },
+      {
+        "question": "What steps are you taking in ESG and sustainability?",
+        "answer": "We're embedding ESG into investment decisions and operations, targeting net-zero goals and social impact initiatives."
+      }
+    ]
+  },
+  {
+    "company": "Prudential Financial, Inc.",
+    "ticker": "PRU",
+    "earnings_date": "2025-05-05",
+    "questions_answers": [
+      {
+        "question": "What are your key growth areas in retirement solutions?",
+        "answer": "We're focusing on protected income products and expanding distribution partnerships in the U.S. and Japan."
+      },
+      {
+        "question": "How are market conditions impacting your asset management division?",
+        "answer": "We're seeing increased demand for fixed income and liability-driven investments amid market volatility."
+      },
+      {
+        "question": "What impact has longevity risk had on your annuity book?",
+        "answer": "We're monitoring longevity trends closely and have hedging strategies in place for our older annuity cohorts."
+      },
+      {
+        "question": "How is your digital transformation progressing?",
+        "answer": "We're deploying AI in underwriting and chatbots in servicing, leading to faster response times and lower costs."
+      },
+      {
+        "question": "What are you doing to de-risk your balance sheet?",
+        "answer": "We've reduced equity exposure and increased high-grade credit allocation to better align with liability profiles."
+      }
+    ]
+  }
+]
