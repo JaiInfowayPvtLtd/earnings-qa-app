@@ -1,139 +1,7 @@
-// const http = require('http');
-// const fs = require('fs');
-// const url = require('url');
-
-// // Load JSON data once
-// const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));
-
-// const PORT = 3000;
-
-// const server = http.createServer((req, res) => {
-//   const parsedUrl = url.parse(req.url, true);
-//   const path = parsedUrl.pathname.toLowerCase();
-
-//   res.setHeader('Content-Type', 'application/json');
-
-//   // GET /calls => return all calls
-//   if (req.method === 'GET' && path === '/calls') {
-//     res.writeHead(200);
-//     res.end(JSON.stringify(data));
-//   }
-
-//   // GET /calls/:company
-//   else if (req.method === 'GET' && path.startsWith('/calls/')) {
-//     const companyName = decodeURIComponent(path.replace('/calls/', '')).toLowerCase();
-//     const match = data.find(c => c.company.toLowerCase().includes(companyName));
-
-//     if (match) {
-//       res.writeHead(200);
-//       res.end(JSON.stringify(match));
-//     } else {
-//       res.writeHead(404);
-//       res.end(JSON.stringify({ message: 'Company not found' }));
-//     }
-//   }
-
-//   // Fallback
-//   else {
-//     res.writeHead(404);
-//     res.end(JSON.stringify({ message: 'Route not found' }));
-//   }
-// });
-
-// server.listen(PORT, () => {
-//   console.log(`Server running at http://localhost:${PORT}`);
-// });
-
-
-
-
-// const http = require('http');
-// const fs = require('fs');
-// const url = require('url');
-
-// // Load JSON data once
-// const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));
-
-// const PORT = 3000;
-
-// const server = http.createServer((req, res) => {
-//   const parsedUrl = url.parse(req.url, true);
-//   const path = parsedUrl.pathname.toLowerCase();
-//   const query = parsedUrl.query;
-
-//   res.setHeader('Content-Type', 'application/json');
-
-//   // GET /calls => return all calls
-//   if (req.method === 'GET' && path === '/calls') {
-//     res.writeHead(200);
-//     res.end(JSON.stringify(data));
-//   }
-
-//   // GET /calls/:company
-//   else if (req.method === 'GET' && path.startsWith('/calls/')) {
-//     const companyName = decodeURIComponent(path.replace('/calls/', '')).toLowerCase();
-//     const match = data.find(c => c.company.toLowerCase().includes(companyName));
-
-//     if (match) {
-//       res.writeHead(200);
-//       res.end(JSON.stringify(match));
-//     } else {
-//       res.writeHead(404);
-//       res.end(JSON.stringify({ message: 'Company not found' }));
-//     }
-//   }
-
-//   // GET /question?text={question} => return matching question and answer
-//   else if (req.method === 'GET' && path === '/question' && query.text) {
-//     const questionText = decodeURIComponent(query.text).toLowerCase();
-//     let match = null;
-
-//     // Search through all companies and their questions
-//     for (const company of data) {
-//       const found = company.questions_answers.find(qa => 
-//         qa.question.toLowerCase().includes(questionText)
-//       );
-//       if (found) {
-//         match = {
-//           company: company.company,
-//           ticker: company.ticker,
-//           earnings_date: company.earnings_date,
-//           question: found.question,
-//           answer: found.answer
-//         };
-//         break;
-//       }
-//     }
-
-//     if (match) {
-//       res.writeHead(200);
-//       res.end(JSON.stringify(match));
-//     } else {
-//       res.writeHead(404);
-//       res.end(JSON.stringify({ message: 'Question not found' }));
-//     }
-//   }
-
-//   // Fallback
-//   else {
-//     res.writeHead(404);
-//     res.end(JSON.stringify({ message: 'Route not found' }));
-//   }
-// });
-
-// server.listen(PORT, () => {
-//   console.log(`Server running at http://localhost:${PORT}`);
-// });
-
-
-
-
-
-
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000; // Use environment variable or default to 3000
 require('dotenv').config();
+const port = process.env.PORT || 3003; // Use environment variable or default to 3000
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -252,17 +120,85 @@ const companiesData = [
 
 
 
+// app.get('/api/companies/questions', (req, res) => {
+//   const response = companiesData.map(company => ({
+//       company: company.company,
+//       ticker: company.ticker,
+//       earnings_date: company.earnings_date,
+//       questions_answers: company.questions_answers
+//   }));
+//   res.json(response);
+// });
+
+// // Endpoint to get all questions and answers for a specific company
+// app.get('/api/:company/questions', (req, res) => {
+//     const companyName = req.params.company;
+//     const company = companiesData.find(c => c.company.toLowerCase() === companyName.toLowerCase());
+    
+//     if (!company) {
+//         return res.status(404).json({ error: 'Company not found' });
+//     }
+    
+//     res.json({
+//         company: company.company,
+//         ticker: company.ticker,
+//         earnings_date: company.earnings_date,
+//         questions_answers: company.questions_answers
+//     });
+// });
+
+// // Endpoint to get a specific question and answer for a company
+// app.post('/api/question', (req, res) => {
+//   const { company, question } = req.body;
+  
+//   if (!company || !question) {
+//       return res.status(400).json({ error: 'Both company and question are required in the request body' });
+//   }
+  
+//   const companyData = companiesData.find(c => c.company.toLowerCase() === company.toLowerCase());
+  
+//   if (!companyData) {
+//       return res.status(404).json({ error: 'Company not found' });
+//   }
+  
+//   const qa = companyData.questions_answers.find(q => 
+//       q.question.toLowerCase().includes(question.toLowerCase())
+//   );
+  
+//   if (!qa) {
+//       return res.status(404).json({ error: 'Question not found' });
+//   }
+  
+//   res.json(qa.answer);
+// });
+
+
+
+// Helper function to convert questions_answers array to a flattened object
+const convertQuestionsToObject = (questionsAnswers) => {
+    const result = {};
+    questionsAnswers.forEach((qa, index) => {
+        result[`question${index + 1}`] = qa.question;
+        result[`answer${index + 1}`] = qa.answer;
+    });
+    return result;
+};
+
+// Endpoint92 to get all companies' questions and answers (no arrays)
 app.get('/api/companies/questions', (req, res) => {
-  const response = companiesData.map(company => ({
-      company: company.company,
-      ticker: company.ticker,
-      earnings_date: company.earnings_date,
-      questions_answers: company.questions_answers
-  }));
-  res.json(response);
+    const response = companiesData.reduce((acc, company) => {
+        acc[company.company] = {
+          company: company.company,
+          ticker: company.ticker,
+          earnings_date: company.earnings_date,
+          questions_answers: convertQuestionsToObject(company.questions_answers)
+        };
+        return acc;
+    }, {});
+    res.json(response);
 });
 
-// Endpoint to get all questions and answers for a specific company
+// Endpoint to get a specific company's questions and answers (no arrays)
 app.get('/api/:company/questions', (req, res) => {
     const companyName = req.params.company;
     const company = companiesData.find(c => c.company.toLowerCase() === companyName.toLowerCase());
@@ -275,33 +211,33 @@ app.get('/api/:company/questions', (req, res) => {
         company: company.company,
         ticker: company.ticker,
         earnings_date: company.earnings_date,
-        questions_answers: company.questions_answers
+        questions_answers: convertQuestionsToObject(company.questions_answers)
     });
 });
 
-// Endpoint to get a specific question and answer for a company
+// Endpoint to get a specific question and answer for a company (unchanged)
 app.post('/api/question', (req, res) => {
-  const { company, question } = req.body;
-  
-  if (!company || !question) {
-      return res.status(400).json({ error: 'Both company and question are required in the request body' });
-  }
-  
-  const companyData = companiesData.find(c => c.company.toLowerCase() === company.toLowerCase());
-  
-  if (!companyData) {
-      return res.status(404).json({ error: 'Company not found' });
-  }
-  
-  const qa = companyData.questions_answers.find(q => 
-      q.question.toLowerCase().includes(question.toLowerCase())
-  );
-  
-  if (!qa) {
-      return res.status(404).json({ error: 'Question not found' });
-  }
-  
-  res.json(qa.answer);
+    const { company, question } = req.body;
+    
+    if (!company || !question) {
+        return res.status(400).json({ error: 'Both company and question are required in the request body' });
+    }
+    
+    const companyData = companiesData.find(c => c.company.toLowerCase() === company.toLowerCase());
+    
+    if (!companyData) {
+        return res.status(404).json({ error: 'Company not found' });
+    }
+    
+    const qa = companyData.questions_answers.find(q => 
+        q.question.toLowerCase().includes(question.toLowerCase())
+    );
+    
+    if (!qa) {
+        return res.status(404).json({ error: 'Question not found' });
+    }
+    
+    res.json({ answer: qa.answer });
 });
 
 // Start the server
